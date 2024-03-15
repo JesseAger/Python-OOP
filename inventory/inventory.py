@@ -1,18 +1,19 @@
 import os
 from datetime import datetime
+from time_date import Time, Date
 
-def save_items_to_inventory(SerialNo: int, Item: str, Date: str, Price: float):
-        if not os.path.exists('Inventory.txt'):
-            with open('Inventory.txt', 'w') as file:
-                file.write("SerialNo\tItem\tDate\tPrice")
-        with open('Inventory.txt', 'a') as file:
-            file.write(f"{SerialNo.zfill(4)}\t{Item}\t{Date}\t{Price}\n")
+def save_items_to_inventory(SerialNo: int, Item: str, Price: float, Date = Date, Time=Time):
+        if not os.path.exists('Inventory.csv'):
+            with open('Inventory.csv', 'w') as file:
+                file.write("SerialNo\tItem\tPrice\tDate\tTime")
+        with open('Inventory.csv', 'a') as file:
+            file.write(f"{SerialNo.zfill(4)}\t{Item}\t{Price}\t{Date}\t{Time}\n")
 
 
 def read_items_from_inventory():
     Items = []
-    if os.path.exists('Inventory.txt'):
-        with open('Inventory.txt') as file:
+    if os.path.exists('Inventory.csv'):
+        with open('Inventory.csv') as file:
             Items= file.readlines
     # return [line.strip().split('\t') for line in Items]
 
@@ -29,8 +30,8 @@ def main():
             print('Incomplete Inventory information')
             continue
 
-        SerialNo, Item, Date, Price = [components.strip() for components in Items]
-        save_items_to_inventory(SerialNo, Item, Date, Price)
+        SerialNo, Item, Price = [components.strip() for components in Items]
+        save_items_to_inventory(SerialNo, Item, Price, Date)
         print('Inventory Added')
 
         added_item = read_items_from_inventory()

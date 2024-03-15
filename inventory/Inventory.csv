@@ -1,2 +1,4 @@
-
-00012	nghi	200	<function Date at 0x000001F2F32A85E0>	<function Time at 0x000001F2F32A8820>
+SerialNo	Item	Price	Date_of_execution	Time_of_execution
+12          sdkbj	wqid	<function Date at 0x0000021E0EA58700>	<function Time at 0x0000021E0EA58E50>
+0012	ufbi	100	<function Date at 0x000001BC89A68700>	<function Time at 0x000001BC89A68E50>
+0001	iddbv	12	<function Date at 0x000001B3060F8790>	<function Time at 0x000001B3060F8E50>

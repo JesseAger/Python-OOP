@@ -5,21 +5,19 @@ import time_date
 import random
 from time_date import Time, Date
 import sales
-from sales import get_item, generate_serialNo
-item = sales.get_item()
 Date = time_date.Date()
 Time = time_date.Time()
-serialNumber = sales.generate_serialNo()
+
 low =  0
 high = 100
 count = 50
 
-def save_items_to_inventory(Price: float, SerialNo = random.choice(serialNumber), Item = item, date = Date, time = Time):
+def save_items_to_inventory(SerialNo, Price: float, Item, date = Date, time = Time):
         if not os.path.exists('Inventory.sql'):
             with open('Inventory.sql', 'w') as file:
-                file.write("SerialNo\tPrice\tItem\tdate\t\ttime")
+                file.write("SerialNo\tPrice\tItem\t\tdate\t\ttime")
         with open('Inventory.sql', 'a') as file:
-            file.write(f"{SerialNo}\t{Price}\t{Item}\t{date}\t{time}\n")
+            file.write(f"{SerialNo}\t\t\t{Price}\t\t{Item}\t\t{date}\t\t{time}\n")
 
 
 def read_items_from_inventory():
@@ -38,12 +36,12 @@ def main():
             break
 
         Items = Item_input.split('\t')
-        if len(Items) !=1:
+        if len(Items) !=3:
             print('Incomplete Inventory information')
             continue
 
-        Price = [components.strip() for components in Items]
-        save_items_to_inventory(serialNumber, Price, item, Date, Time)
+        serialNo, Price, Item = [components.strip() for components in Items]
+        save_items_to_inventory(serialNo, Price,Item, Date, Time)
         print('Inventory Added')
 
         added_item = read_items_from_inventory()

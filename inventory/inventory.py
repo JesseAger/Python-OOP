@@ -6,10 +6,10 @@ import random
 from time_date import Time, Date
 import sales
 from sales import get_item, generate_serialNo
-serialNumber = sales.generate_serialNo()
 item = sales.get_item()
 Date = time_date.Date()
 Time = time_date.Time()
+serialNumber = sales.generate_serialNo()
 low =  0
 high = 100
 count = 50
@@ -19,7 +19,7 @@ def save_items_to_inventory(Price: float, SerialNo = random.choice(serialNumber)
             with open('Inventory.sql', 'w') as file:
                 file.write("SerialNo\tPrice\tItem\tdate\t\ttime")
         with open('Inventory.sql', 'a') as file:
-            file.write(f"{SerialNo.zfill(4)}\t{Price}\t{Item}\t{date}\t{time}\n")
+            file.write(f"{SerialNo}\t{Price}\t{Item}\t{date}\t{time}\n")
 
 
 def read_items_from_inventory():

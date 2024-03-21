@@ -17,7 +17,7 @@ def save_items_to_inventory(SerialNo, Price: float, Item, date = Date, time = Ti
             with open('Inventory.sql', 'w') as file:
                 file.write("SerialNo\tPrice\tItem\t\tdate\t\ttime")
         with open('Inventory.sql', 'a') as file:
-            file.write(f"{SerialNo}\t\t\t{Price}\t\t{Item}\t\t{date}\t\t{time}\n")
+            file.write(f"{SerialNo}\t\t{Price}\t\t{Item}\t\t{date}\t\t{time}\n")
 
 
 def read_items_from_inventory():
